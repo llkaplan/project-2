@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS `sequelize_items`;
-CREATE DATABASE `sequelize_items`;
+DROP DATABASE IF EXISTS `shopping_db`;
+CREATE DATABASE `shopping_db`;
