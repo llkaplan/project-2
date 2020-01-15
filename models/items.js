@@ -8,10 +8,9 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     description: { 
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       validate: {
-        max: 300,
-        min: 1,
+        len: [1]
       }
     },
     price: { 
@@ -43,11 +42,11 @@ module.exports = function(sequelize, DataTypes) {
 
   Item.associate = function (models) {
     Item.belongsTo(models.Category, {
-        foreignKey: {
-            allowNull: false
-        }
+      foreignKey: {
+        allowNull: false
+      }
     });
-};
+  };
 
   return Item;
 };
