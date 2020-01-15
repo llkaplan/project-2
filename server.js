@@ -4,6 +4,7 @@ var exphbs = require("express-handlebars");
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
+var exphbs = require("express-handlebars");
 
 // Static directory
 app.use(express.static("public"));
@@ -13,6 +14,7 @@ var db = require("./models");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 
 
