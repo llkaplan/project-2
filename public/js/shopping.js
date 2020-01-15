@@ -1,4 +1,11 @@
-/* global moment */
+//For dropdown options
+$(document).ready(function () {
+  $('select').formSelect();
+});
+
+$(document).ready(function(){
+  $('.collapsible').collapsible();
+});
 
 // When user clicks add-btn
 $("#chirp-submit").on("click", function(event) {
