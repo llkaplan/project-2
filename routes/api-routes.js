@@ -9,31 +9,36 @@ module.exports = function(app) {
       res.render("index",data);
     });
   });
-
+  //items api route
   app.get("/api/items", function(req,res){
-    console.log(req.query);
-    db.Item.findAll({}).then(function(dbItems) {      
-      res.json(dbItems)
-      }).catch(function(err){ 
-        console.log("Something went wrong.",err);
-        res.status(500).send()
-      });
+    console.log(req.query.category_id);
+    var query = {};
+    if (req.query.category_id) {
+      query.CategoryId = req.query.category_id;
+    }
+    db.Item.findAll({}).then(function(dbItem) {
+      res.json(dbItem);
     });
-  };
-  // Get all Item
-  // app.get("/api/all", function(req, res) {
-
-  //   // Finding all Items, and then returning them to the user as JSON.
-  //   // Sequelize queries are asynchronous, which helps with perceived speed.
-  //   // If we want something to be guaranteed to happen after the query, we'll use
-  //   // the .then function
-  //   Item.findAll({}).then(function(results) {
-  //     // results are available to us inside the .then
-
-  //     res.render("index",data);
-  //   });
-
-  // });
-
-
+  });
+  app.get("/api/items/:id", function(req,res){
+    db.Item.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Category]
+    }).then(function(dbItem){
+      res.json(dbItem);
+    });
+  });
+  //category api routes
+  app.get("/api/categories", function(req,res){
+    db.Category.findAll({
+      include: [db.Items]
+    }).then(function(dbPost) {
+      res.json(dbPost);
+    });
+  });
 };
+
+
+
