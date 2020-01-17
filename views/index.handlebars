@@ -20,11 +20,11 @@
         <div class="input-field col s4 right">
           <select id="options">
             <option value="" disabled selected>Select options</option>
-            <option value="1">Entertainments</option>
+            <option value="1">Beauty</option>
             <option value="2">Sports</option>
-            <option value="3">Beauty</option>
-            <option value="4">Music</option>
-            <option value="5">Miscellaneous</option>
+            <option value="3">Food</option>
+            <option value="4">Apparel</option>
+            <option value="5">Entertainment</option>
             <option value="5">Others</option>
           </select>
         </div>
@@ -34,8 +34,16 @@
     </div>
     <div class="row">
       <div class="card col s3 left">
+          
+          
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="img/headphone.jpg">
+          
+          {{#each items}}    
+            
+            <a href="#"><img class="activator" src={{image}}></a>
+          {{/each}}
+
+          
     
         </div>
         <div class="card-content">
