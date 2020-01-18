@@ -14,18 +14,11 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
-
-// Set Handlebars.
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Routes
 // =============================================================
-// require("./routes/html-routes.js")(app);
-// require("./routes/author-api-routes.js")(app);
 require("./routes/api-routes.js")(app);
 
 // Syncing our sequelize models and then starting our Express app

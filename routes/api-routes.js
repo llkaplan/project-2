@@ -4,6 +4,7 @@ var db= require("../models/");
 // =============================================================
 module.exports = function(app) {
   //html routes
+<<<<<<< HEAD
 
   app.get("/", function(req,res){   
     res.render("index",data);
@@ -18,26 +19,58 @@ module.exports = function(app) {
     }
     db.Item.findAll({}).then(function(dbItem) {
       res.json(dbItem);
+=======
+  app.get("/", function(req,res){
+    var blue = {
+      name: "Jocelyn"
+    };
+    res.render("index",blue);
+  });
+
+  app.get("/item",function(req,res){
+    res.render("index");
+  });
+  //reviews api route
+  app.get("/api/reviews", function(req,res){
+
+    db.Reviews.findAll({}).then(function(dbReviews) {
+      res.json(dbReviews);
     });
   });
-  app.get("/api/items/:id", function(req,res){
-    db.Item.findOne({
+
+  app.post("/api/reviews", function(req, res) {
+    db.Reviews.create(req.body).then(function(dbReviews) {
+      res.json(dbReviews);
+>>>>>>> e3b621598ccf0881382867544f2f3089885e2c5b
+    });
+  });
+
+  app.put("/api/reviews", function(req, res) {
+    db.Reviews.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbReviews) {
+      res.json(dbReviews);
+    });
+  });
+
+  app.delete("/api/reviews/:id", function(req, res) {
+    db.Reviews.destroy({
       where: {
         id: req.params.id
-      },
-      include: [db.Category]
-    }).then(function(dbItem){
-      res.json(dbItem);
+      }
+    }).then(function(dbReviews) {
+      res.json(dbReviews);
     });
   });
-  //category api routes
-  app.get("/api/categories", function(req,res){
-    db.Category.findAll({
-      include: [db.Items]
-    }).then(function(dbPost) {
-      res.json(dbPost);
-    });
-  });
+
+  //all the reviews for an item
+  // app.get("/api/item/:id",function(req,res){
+  //   db.Reviews.
+  // })
 };
 
 
