@@ -1,12 +1,7 @@
 var express = require("express");
-<<<<<<< HEAD
 
 // Sets up the Express App
 // =============================================================
-=======
-var exphbs = require("express-handlebars");
-
->>>>>>> 31a9ecd4c63f9f58402310955a5f1b9c6b3d6a56
 var app = express();
 var PORT = process.env.PORT || 8080;
 

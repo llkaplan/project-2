@@ -4,11 +4,11 @@ var db= require("../models/");
 // =============================================================
 module.exports = function(app) {
   //html routes
-  app.get("/", function(req,res){
-    db.Item.findAll({}).then(function(data) {
-      res.render("index",data);
-    });
+
+  app.get("/", function(req,res){   
+    res.render("index",data);
   });
+
   //items api route
   app.get("/api/items", function(req,res){
     console.log(req.query.category_id);
