@@ -1,35 +1,39 @@
 <div class="container ">
-    <div class="row">
-        <div class="col s6">
-            <h5><a href="index.html" class="heading h1 black-text ">Shopping Cart</a></h5>
-        </div>
-        <div class="col s6">
-            <a href="#"><i class="medium material-icons right black-text">shopping_cart</i></a>
-        </div>
+  <div class="row">
+    <div class="col s6">
+      <h5><a href="index.html" class="heading h1 black-text ">Shopping Cart</a></h5>
+    </div>
+    <div class="col s6">
 
+      <a href="#"><i class="medium material-icons right black-text">shopping_cart</i></a>
     </div>
-    <div class="row">
-        <nav>
-            <div class="nav-wrapper blue-grey darken-1">
-            </div>
-        </nav>
-    </div>
+  </div>
+  <div class="row">
+    <nav>
+      <div class="nav-wrapper blue-grey darken-1">
+      </div>
+    </nav>
+  </div>
+  <div class="row">
+    {{#each items}}
+    
+      
+        <div class="card large col s3 left hoverable">
+          <div class="card-image waves-effect waves-block waves-light">
+            <a href="itemsDescription.handlebars"><img class="activator" src={{image}}></a>
+          </div>
+          <div class="card-content">
+            <h6 class="black-text left">{{name}}</h6>
+            <h6><a href="#" class="black-text darken-1-text right">${{price}}</a></h6>
+          </div>
+        </div>
+     
+    
+    {{/each}}
+  </div>
 </div>
 
-<ul>
-    {{#each items}}
-    <li>
-        <div class="row">
-            <div class="card col s3 left hoverable">
-                <div class="card-image waves-effect waves-block waves-light">
-                    <a href="itemDescription.html"><img class="activator" src={{image}}></a>
-                </div>
-                <div class="card-content">
-                    <h6 class="black-text left">Post Reviews</h6>
-                    <h6><a href="#" class="black-text darken-1-text right">$90</a></h6>
-                </div>
-            </div>
-        </div>
-    </li>
-    {{/each}}
-</ul>
+
+
+
+
