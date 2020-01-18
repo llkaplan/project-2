@@ -54,7 +54,7 @@ module.exports = function(app) {
       name: "Kindle",
       image: "https://images-na.ssl-images-amazon.com/images/I/61Ww4abGclL._SL1000_.jpg",
       price: 59.99
-    }
+    },
   ];
   app.get("/", function(req,res){
     var data ={
@@ -68,8 +68,20 @@ module.exports = function(app) {
     res.render("index",data);
   });
 
-  app.get("/item",function(req,res){
-    res.render("index");
+  app.get("/items/:id",function(req,res){
+    
+    res.render("item",)
+  })
+
+  app.get("/api/items/:id",function(req,res){
+
+    db.Reviews.findAll({
+      where: {
+        itemID: req.params.id
+      }
+    }).then(function(dbReviews) {
+      res.json(dbReviews);
+    });
   });
   //reviews api route
   app.get("/api/reviews", function(req,res){
@@ -107,10 +119,6 @@ module.exports = function(app) {
     });
   });
 
-  //all the reviews for an item
-  // app.get("/api/item/:id",function(req,res){
-  //   db.Reviews.
-  // })
 };
 
 
