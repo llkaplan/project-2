@@ -1,117 +1,62 @@
 $(document).ready(function() {
   /* global moment */
 
-  // blogContainer holds all of our posts
-  var blogContainer = $(".blog-container");
-  var postCategorySelect = $("#category");
+  // reviewContainer holds all of our reviews
+  var itemContainer = $(".item-container");
+  var reviewContainer = $(".review-container");
   // Click events for the edit and delete buttons
-  $(document).on("click", "button.delete", handlePostDelete);
+  $(document).on("click", "button.delete", handleReviewDelete);
   $(document).on("click", "button.edit", handlePostEdit);
   // Variable to hold our posts
-  var posts;
+  var review;
 
   // The code below handles the case where we want to get blog posts for a specific author
   // Looks for a query param in the url for author_id
   var url = window.location.search;
-  var authorId;
-  if (url.indexOf("?author_id=") !== -1) {
-    authorId = url.split("=")[1];
-    getPosts(authorId);
-  }
-  // If there's no authorId we just get all posts as usual
-  else {
-    getPosts();
+  var itemId;
+  if (url.indexOf("?item_id=") !== -1) {
+    itemId = url.split("=")[1];
+    getReviews(itemId);
   }
 
 
   // This function grabs posts from the database and updates the view
-  function getPosts(author) {
-    authorId = author || "";
-    if (authorId) {
-      authorId = "/?author_id=" + authorId;
+  function getReviews(item) {
+    itemId = item || "";
+    if (itemId) {
+      itemId = "/?item_id=" + itemId;
     }
-    $.get("/api/posts" + authorId, function(data) {
-      console.log("Posts", data);
-      posts = data;
-      if (!posts || !posts.length) {
-        displayEmpty(author);
-      }
-      else {
+    $.get("/api/items" + itemId, function(data) {
+      console.log("Reviews", data);
+      review = data;
+      if (!review || !review.length) {
+        displayEmpty(item);
+      }else {
         initializeRows();
       }
     });
   }
 
   // This function does an API call to delete posts
-  function deletePost(id) {
+  function deleteReview(id) {
     $.ajax({
       method: "DELETE",
-      url: "/api/posts/" + id
+      url: "/api/reviews/" + id
     })
       .then(function() {
-        getPosts(postCategorySelect.val());
+        getReviews(item);
       });
   }
 
-  // InitializeRows handles appending all of our constructed post HTML inside blogContainer
-  function initializeRows() {
-    blogContainer.empty();
-    var postsToAdd = [];
-    for (var i = 0; i < posts.length; i++) {
-      postsToAdd.push(createNewRow(posts[i]));
-    }
-    blogContainer.append(postsToAdd);
-  }
 
-  // This function constructs a post's HTML
-  function createNewRow(post) {
-    var formattedDate = new Date(post.createdAt);
-    formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
-    var newPostCard = $("<div>");
-    newPostCard.addClass("card");
-    var newPostCardHeading = $("<div>");
-    newPostCardHeading.addClass("card-header");
-    var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.addClass("delete btn btn-danger");
-    var editBtn = $("<button>");
-    editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-info");
-    var newPostTitle = $("<h2>");
-    var newPostDate = $("<small>");
-    var newPostAuthor = $("<h5>");
-    newPostAuthor.text("Written by: " + post.Author.name);
-    newPostAuthor.css({
-      float: "right",
-      color: "blue",
-      "margin-top":
-      "-10px"
-    });
-    var newPostCardBody = $("<div>");
-    newPostCardBody.addClass("card-body");
-    var newPostBody = $("<p>");
-    newPostTitle.text(post.title + " ");
-    newPostBody.text(post.body);
-    newPostDate.text(formattedDate);
-    newPostTitle.append(newPostDate);
-    newPostCardHeading.append(deleteBtn);
-    newPostCardHeading.append(editBtn);
-    newPostCardHeading.append(newPostTitle);
-    newPostCardHeading.append(newPostAuthor);
-    newPostCardBody.append(newPostBody);
-    newPostCard.append(newPostCardHeading);
-    newPostCard.append(newPostCardBody);
-    newPostCard.data("post", post);
-    return newPostCard;
-  }
 
   // This function figures out which post we want to delete and then calls deletePost
-  function handlePostDelete() {
-    var currentPost = $(this)
+  function handleReviewDelete() {
+    var currentReview = $(this)
       .parent()
       .parent()
-      .data("post");
-    deletePost(currentPost.id);
+      .data("review");
+    deleteReview(currentReview.id);
   }
 
   // This function figures out which post we want to edit and takes it to the appropriate url

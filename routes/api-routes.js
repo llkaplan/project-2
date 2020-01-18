@@ -156,9 +156,13 @@ module.exports = function (app) {
     }
     res.render("index",data);
   });
-  app.get("/item",function(req,res){
-    res.render("index");
+
+  app.get("/item/:id",function(req,res){
+    var indexItem = req.params.id-1;
+    console.log(indexItem);
+    res.render("itemsDescription",items[indexItem]);
   });
+
   //reviews api route
   app.get("/api/reviews", function(req,res){
     db.Reviews.findAll({}).then(function(dbReviews) {
