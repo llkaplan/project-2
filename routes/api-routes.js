@@ -72,9 +72,6 @@ module.exports = function (app) {
     {
       name: "Kindle",
       image: "https://images-na.ssl-images-amazon.com/images/I/61Ww4abGclL._SL1000_.jpg",
-<<<<<<< HEAD
-      price: 59.99
-=======
       price: 59.99,
       description: "Adjustable front light lets you read comfortably for hours—indoors and outdoors, day and night. Purpose-built for reading, with a 167 ppi glare-free display that reads like real paper, even in direct sunlight. Read distraction-free. Highlight passages, look up definitions, translate words, and adjust text size—without ever leaving the page.",
       id: 10
@@ -148,7 +145,6 @@ module.exports = function (app) {
       price: 14.99,
       description: "You know 'em, love 'em, now get your hands on some Black Forest Gummy Bears. Made with real fruit juice, fat-free & gluten-free, each little gummy bear is as delicious as the last & the resealable bag keeps them fresh.",
       id: 20
->>>>>>> 3594c859e479f2062f91aebf175bc027b8cf8bf3
     },
   ];
   app.get("/", function(req,res){
@@ -160,27 +156,13 @@ module.exports = function (app) {
     }
     res.render("index",data);
   });
-<<<<<<< HEAD
 
-  app.get("/items/:id",function(req,res){
-    
-    res.render("item",)
-  })
-
-  app.get("/api/items/:id",function(req,res){
-
-    db.Reviews.findAll({
-      where: {
-        itemID: req.params.id
-      }
-    }).then(function(dbReviews) {
-      res.json(dbReviews);
-    });
-=======
-  app.get("/item",function(req,res){
-    res.render("index");
->>>>>>> 3594c859e479f2062f91aebf175bc027b8cf8bf3
+  app.get("/item/:id",function(req,res){
+    var indexItem = req.params.id-1;
+    console.log(indexItem);
+    res.render("itemsDescription",items[indexItem]);
   });
+
   //reviews api route
   app.get("/api/reviews", function(req,res){
     db.Reviews.findAll({}).then(function(dbReviews) {
