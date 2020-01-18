@@ -16,12 +16,7 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
 
-<<<<<<< HEAD
 
 
-    return Reviews;
-}
-=======
   return Reviews;
 };
->>>>>>> e3b621598ccf0881382867544f2f3089885e2c5b
