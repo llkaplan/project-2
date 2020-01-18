@@ -1,0 +1,102 @@
+<div class="container ">
+    <div class="row">
+        <div class="col s6">
+            <h5 class="heading h1">Shopping Cart</h5>
+        </div>
+        <div class="col s6">
+            <i class="medium material-icons right">shopping_cart</i>
+        </div>
+
+    </div>
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper blue-grey darken-1">
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="card-action">
+            <!-- Trivia Dropdwn -->
+            <div class="input-field col s4 right">
+                <select id="options">
+                    <option value="" disabled selected>Select options</option>
+                    <option value="1">Beauty</option>
+                    <option value="2">Sports</option>
+                    <option value="3">Food</option>
+                    <option value="4">Apparel</option>
+                    <option value="5">Entertainment</option>
+                    <option value="5">Others</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card col s4 left">
+
+
+            <div class="card-image waves-effect waves-block waves-light">
+
+                {{#each items}}
+
+                <a href="#"><img class="activator" src={{image}}></a>
+                {{/each}}
+
+
+
+            </div>
+            <div class="card-content">
+
+                <p><a href="#" class="black-text darken-1-text right">Add to cart</a></p>
+
+            </div>
+        </div>
+
+        <div class="col 8 right">
+
+            <h1> Item Descriptions: </h1>
+            <br />
+            <p> {{description}} </p>
+            <br />
+            <h3> Price: {{ price}} </h3>
+            <p><a href="#" class="black-text darken-1-text right">Add to cart</a></p>
+
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h2>If you have any comments or concerns, feel free to post them below!</h2>
+        </div>
+    </div>
+    <div class="row">
+        <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+                    <label for="icon_prefix2">First Name</label>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <button class="btn waves-effect waves-light" id="comments-submit" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+    </button>
+
+
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <h2>Chirps</h2>
+            <hr>
+            <div id="chirp-area"></div>
+        </div>
+    </div>
+
+
+
+</div>
+<script src="../../public/js/shopping.js"></script>
+</div>
