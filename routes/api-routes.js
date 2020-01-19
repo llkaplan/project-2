@@ -163,11 +163,6 @@ module.exports = function (app) {
     res.render("itemsDescription",items[indexItem]);
   });
 
-  app.get("/item/:id",function(req,res){
-    var indexItem = req.params.id-1;
-    console.log(indexItem);
-    res.render("itemsDescription",items[indexItem]);
-  });
 
   //reviews api route
   app.get("/api/reviews", function(req,res){
@@ -188,10 +183,15 @@ module.exports = function (app) {
   });
 
   app.post("/api/reviews", function(req, res) {
-    db.Reviews.create(req.body).then(function(dbReviews) {
-      res.json(dbReviews);
-    });
+    db.Reviews.create({
+      name: req.body.name,
+      comment: req.body.comment,
+      itemID: req.body.itemID})
+      .then(function(dbReviews) {
+        res.json(dbReviews);
+      });
   });
+
   app.put("/api/reviews", function(req, res) {
     db.Reviews.update(
       req.body,
