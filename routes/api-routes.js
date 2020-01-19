@@ -135,7 +135,7 @@ module.exports = function (app) {
     {
       name: "Blue Light Blocking Glasses",
       image: "https://images-na.ssl-images-amazon.com/images/I/51lv3hfmZWL._AC_UX679_.jpg",
-      price: 19.90,
+      price: 19.99,
       description: "Glasses lens are designed using the American HEV-Adsorb substrate absorption technology. It can absorb high-energy blue light. The lens was made of a fully transparent base, without adding any pigment, while maintaining high light transmittance. Less reflective, no affect reading, and almost no color difference.",
       id: 19
     },
