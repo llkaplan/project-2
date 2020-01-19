@@ -9,7 +9,7 @@ module.exports = function (app) {
       name: "Apple Ipad Pro",
       image: "https://images-na.ssl-images-amazon.com/images/I/61%2BWrV0wJsL._SY741_.jpg",
       price: 847.99,
-      desription: "The new 12. 9-inch iPad Pro features an advanced Liquid Retina display that goes edge to edge. Face ID, so you can securely unlock iPad Pro, log in to apps, and pay with just a glance. The A12X Bionic chip is faster than most PC laptops and easily runs pro apps. All-day battery life.",
+      description: "The new 12. 9-inch iPad Pro features an advanced Liquid Retina display that goes edge to edge. Face ID, so you can securely unlock iPad Pro, log in to apps, and pay with just a glance. The A12X Bionic chip is faster than most PC laptops and easily runs pro apps. All-day battery life.",
       id: 1
     },
     {
@@ -80,7 +80,7 @@ module.exports = function (app) {
       name: "Howard the Duck (Special Edition)",
       image: "https://images-na.ssl-images-amazon.com/images/I/91e1fUYburL._SL1500_.jpg",
       price: 5.00,
-      descripion: "From executive producer George Lucas and the pages of Marvel Comics comes Howard the Duck, an unbelievably funny comedy about a fast-talking, cigar-chomping, beerloving duck from a parallel universe who crashes to Earth and somehow winds up in Cleveland. As Howard attempts to return to his own planet, he falls in love with rock singer Beverly Switzler (Lea Thompson, Back to the Future) and must battle an evil invader known as the Dark Overlord. This wacky, elaborately produced spoof of life, love, comic books and horror movies featuring out-of-this-world special effects is a treasure the whole family can enjoy.",
+      description: "From executive producer George Lucas and the pages of Marvel Comics comes Howard the Duck, an unbelievably funny comedy about a fast-talking, cigar-chomping, beerloving duck from a parallel universe who crashes to Earth and somehow winds up in Cleveland. As Howard attempts to return to his own planet, he falls in love with rock singer Beverly Switzler (Lea Thompson, Back to the Future) and must battle an evil invader known as the Dark Overlord. This wacky, elaborately produced spoof of life, love, comic books and horror movies featuring out-of-this-world special effects is a treasure the whole family can enjoy.",
       id: 11
     },
     {
@@ -155,6 +155,12 @@ module.exports = function (app) {
       data.items.push(items[i]);
     }
     res.render("index",data);
+  });
+
+  app.get("/item/:id",function(req,res){
+    var indexItem = req.params.id-1;
+    console.log(indexItem);
+    res.render("itemsDescription",items[indexItem]);
   });
 
   app.get("/item/:id",function(req,res){
