@@ -156,9 +156,6 @@ module.exports = function (app) {
     }
     res.render("index",data);
   });
-  app.get("/item",function(req,res){
-    res.render("index");
-  });
 
   app.get("/item/:id",function(req,res){
     var indexItem = req.params.id-1;
@@ -166,12 +163,33 @@ module.exports = function (app) {
     res.render("itemsDescription",items[indexItem]);
   });
 
+<<<<<<< HEAD
+  app.get("/item/:id",function(req,res){
+    var indexItem = req.params.id-1;
+    console.log(indexItem);
+    res.render("itemsDescription",items[indexItem]);
+  });
+
+=======
+>>>>>>> 86da2519c70cf5e28c2301e123d5cb1c19922d73
   //reviews api route
   app.get("/api/reviews", function(req,res){
     db.Reviews.findAll({}).then(function(dbReviews) {
       res.json(dbReviews);
     });
   });
+
+  //reviews by item
+  app.get("/api/item/:id",function(req,res){
+    db.Reviews.findAll({
+      where: {
+        itemID: req.params.id
+      }
+    }).then(function(dbReview){
+      res.json(dbReview);
+    });
+  });
+
   app.post("/api/reviews", function(req, res) {
     db.Reviews.create(req.body).then(function(dbReviews) {
       res.json(dbReviews);

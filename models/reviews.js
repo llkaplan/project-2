@@ -7,13 +7,17 @@ module.exports = function (sequelize, DataTypes) {
         min: 1,
       }
     },
-    comments: {
+    comment: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
+    itemID: {
+      type:DataTypes.INTEGER,
+      allowNull: false
+    }
   });
 
 
