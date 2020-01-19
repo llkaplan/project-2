@@ -9,7 +9,7 @@ module.exports = function (app) {
       name: "Apple Ipad Pro",
       image: "https://images-na.ssl-images-amazon.com/images/I/61%2BWrV0wJsL._SY741_.jpg",
       price: 847.99,
-      desription: "The new 12. 9-inch iPad Pro features an advanced Liquid Retina display that goes edge to edge. Face ID, so you can securely unlock iPad Pro, log in to apps, and pay with just a glance. The A12X Bionic chip is faster than most PC laptops and easily runs pro apps. All-day battery life.",
+      description: "The new 12. 9-inch iPad Pro features an advanced Liquid Retina display that goes edge to edge. Face ID, so you can securely unlock iPad Pro, log in to apps, and pay with just a glance. The A12X Bionic chip is faster than most PC laptops and easily runs pro apps. All-day battery life.",
       id: 1
     },
     {
@@ -159,6 +159,13 @@ module.exports = function (app) {
   app.get("/item",function(req,res){
     res.render("index");
   });
+
+  app.get("/item/:id",function(req,res){
+    var indexItem = req.params.id-1;
+    console.log(indexItem);
+    res.render("itemsDescription",items[indexItem]);
+  });
+
   //reviews api route
   app.get("/api/reviews", function(req,res){
     db.Reviews.findAll({}).then(function(dbReviews) {
