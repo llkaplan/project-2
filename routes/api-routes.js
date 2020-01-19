@@ -80,7 +80,7 @@ module.exports = function (app) {
       name: "Howard the Duck (Special Edition)",
       image: "https://images-na.ssl-images-amazon.com/images/I/91e1fUYburL._SL1500_.jpg",
       price: 5.00,
-      descripion: "From executive producer George Lucas and the pages of Marvel Comics comes Howard the Duck, an unbelievably funny comedy about a fast-talking, cigar-chomping, beerloving duck from a parallel universe who crashes to Earth and somehow winds up in Cleveland. As Howard attempts to return to his own planet, he falls in love with rock singer Beverly Switzler (Lea Thompson, Back to the Future) and must battle an evil invader known as the Dark Overlord. This wacky, elaborately produced spoof of life, love, comic books and horror movies featuring out-of-this-world special effects is a treasure the whole family can enjoy.",
+      description: "From executive producer George Lucas and the pages of Marvel Comics comes Howard the Duck, an unbelievably funny comedy about a fast-talking, cigar-chomping, beerloving duck from a parallel universe who crashes to Earth and somehow winds up in Cleveland. As Howard attempts to return to his own planet, he falls in love with rock singer Beverly Switzler (Lea Thompson, Back to the Future) and must battle an evil invader known as the Dark Overlord. This wacky, elaborately produced spoof of life, love, comic books and horror movies featuring out-of-this-world special effects is a treasure the whole family can enjoy.",
       id: 11
     },
     {
@@ -163,15 +163,12 @@ module.exports = function (app) {
     res.render("itemsDescription",items[indexItem]);
   });
 
-<<<<<<< HEAD
   app.get("/item/:id",function(req,res){
     var indexItem = req.params.id-1;
     console.log(indexItem);
     res.render("itemsDescription",items[indexItem]);
   });
 
-=======
->>>>>>> 86da2519c70cf5e28c2301e123d5cb1c19922d73
   //reviews api route
   app.get("/api/reviews", function(req,res){
     db.Reviews.findAll({}).then(function(dbReviews) {
