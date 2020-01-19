@@ -169,6 +169,18 @@ module.exports = function (app) {
       res.json(dbReviews);
     });
   });
+
+  //reviews by item
+  app.get("/api/item/:id",function(req,res){
+    db.Reviews.findAll({
+      where: {
+        itemID: req.params.id
+      }
+    }).then(function(dbReview){
+      res.json(dbReview);
+    });
+  });
+
   app.post("/api/reviews", function(req, res) {
     db.Reviews.create(req.body).then(function(dbReviews) {
       res.json(dbReviews);
