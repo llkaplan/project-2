@@ -10,6 +10,10 @@ $(document).ready(function() {
     document.location.href="/";
   });
 
+  $(".cart").on("click",function(){
+    document.location.href="/cart";
+  });
+
   $("#submit").on("click", function(event) {
     event.preventDefault();
     var url = window.location.href;

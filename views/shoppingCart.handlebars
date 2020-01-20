@@ -17,4 +17,21 @@
 
 <h1>Order Cofirmation</h1>
 <h3>Here are the items you chose: </h3>
+<div class="row">
+    {{#each items}}
+    
+      
+        <div class="card large col s3 left hoverable item">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" src={{image}}>
+          </div>
+          <div class="card-content">
+            <h6 class="black-text left">{{name}}</h6>
+            <h6><a href="#" class="black-text darken-1-text right">${{price}}</a></h6>
+          </div>
+        </div>
+     
+    
+    {{/each}}
+  </div>
 </div>
