@@ -164,7 +164,16 @@ module.exports = function (app) {
     res.render("itemsDescription",items[indexItem]);
   });
 
-
+  app.get("/cart",function(req,res){
+    db.Cart.findAll({ raw: true,
+    }).then(function(data){
+      console.log(data);
+      var cartItems = {
+        items : data
+      };
+      res.render("shoppingCart",cartItems);
+    });
+  });
   //reviews api route
   app.get("/api/reviews", function(req,res){
     db.Reviews.findAll({}).then(function(dbReviews) {
