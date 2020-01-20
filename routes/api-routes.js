@@ -147,6 +147,7 @@ module.exports = function (app) {
       id: 20
     },
   ];
+  //html routes
   app.get("/", function(req,res){
     var data ={
       items:[]
@@ -163,7 +164,14 @@ module.exports = function (app) {
     res.render("itemsDescription",items[indexItem]);
   });
 
-
+  app.get("/cart",function(req,res){
+    db.Cart.findAll({}).then(function(data){
+      var cartObject = {
+        items : data
+      };
+      res.render("shoppingCart",cartObject);
+    });
+  });
   //reviews api route
   app.get("/api/reviews", function(req,res){
     db.Reviews.findAll({}).then(function(dbReviews) {
@@ -211,6 +219,23 @@ module.exports = function (app) {
     }).then(function(dbReviews) {
       res.json(dbReviews);
     });
+  });
+
+  app.get("/api/cart",function(req,res){
+    db.Cart.findAll({}).then(function(dbCart){
+      res.json(dbCart);
+    });
+  });
+
+  //adding to cart
+  app.post("/api/cart", function(req, res) {
+    db.Cart.create({
+      name: req.body.name,
+      price: req.body.price,
+      image: req.body.image})
+      .then(function(dbCart) {
+        res.json(dbCart);
+      });
   });
 
 };
