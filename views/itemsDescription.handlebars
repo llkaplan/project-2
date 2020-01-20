@@ -17,17 +17,19 @@
   <div class="row">
         <div class="card col s4 left ">
           <div class="card-image waves-effect waves-block waves-light">
-            <a href="#"><img class="activator" src={{image}}></a>
+            <a href="#"><img class="activator item-image" src={{image}}></a>
           </div>
           <div class="card-content">
-            <h5 class="black-text left">{{name}}</h5>
-            <h5><a href="#" class="black-text darken-1-text right">${{price}}</a></h5>
+            <h5 class="black-text left item-name">{{name}}</h5>
+            <h5><a href="#" class="black-text darken-1-text right item-price">${{price}}</a></h5>
           </div>
         </div>
 
         <div class="col s8 left">
         <strong><h4 class="coolFont">Description: </h4></strong> 
         <h5>{{{description}}}</h5>
+        <hr>
+        <button class="add" style="color: blue">Add to Cart</button>
         
 
 

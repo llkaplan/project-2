@@ -147,6 +147,7 @@ module.exports = function (app) {
       id: 20
     },
   ];
+  //html routes
   app.get("/", function(req,res){
     var data ={
       items:[]
@@ -211,6 +212,23 @@ module.exports = function (app) {
     }).then(function(dbReviews) {
       res.json(dbReviews);
     });
+  });
+
+  app.get("/api/cart",function(req,res){
+    db.Cart.findAll({}).then(function(dbCart){
+      res.json(dbCart);
+    });
+  });
+
+  //adding to cart
+  app.post("/api/cart", function(req, res) {
+    db.Cart.create({
+      name: req.body.name,
+      price: req.body.price,
+      image: req.body.image})
+      .then(function(dbCart) {
+        res.json(dbCart);
+      });
   });
 
 };
