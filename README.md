@@ -2,7 +2,7 @@
 
 #### User's Story
 
-AS an online customer, I WANT to checkout the items. SO THAT I can buy the right item and not have to go through the nuissance of returning.
+AS AN online customer, I WANT to checkout the items. SO THAT I can buy the right item.
 
 #### Purpose
 
