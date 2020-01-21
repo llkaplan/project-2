@@ -1,7 +1,7 @@
 <div class="container ">
   <div class="row">
     <div class="col s6">
-      <h3><a href="/" class="heading h1 black-text home ">Shopping Cart</a></h3>
+      <h3><a href="/" class="heading h1 black-text home ">Shopping Reviews</a></h3>
     </div>
     <div class="col s6">
       <br>
@@ -18,10 +18,10 @@
     <h4>Order Confirmation</h4>
     <hr>
     <h5>Added items: </h5>
-    <div class="col s8 left">
+    <div class="col s8 left allOrder">
       {{#each items}}
       <div class="row">
-        <div class="card col s4 left item hoverable" id={{id}}>
+        <div class="card col s4 left item hoverable">
           
             <div class="card-image waves-effect waves-block waves-light">
               <a href="#"><img class="activator item-image" src={{image}}></a>
@@ -30,7 +30,7 @@
         </div>
         <div class="col s8">
           <h5>Name: {{name}}</h5>
-          <h5>Price: ${{price}}</h5>
+          <h5 class="price" data-index={{price}}>Price: ${{price}}</h5>
         </div>
       </div>
       
@@ -75,15 +75,11 @@
 <div class="row">
     <div class="col">
       <div class="card large white">
-        <div class="card-content black-text">
+        <div class="card-content black-text order-summary">
           <span class="card-title"><h4>Orders Summary</h4></span>
           <p>Feel free to check and make sure you added all the right items. Below are all of your items calculated using tax API (Application Programming Interface). Once you are ready, click the button below to proceed to the next step.</p>
           <hr>
-          <h5>Items: </h5>
-          <h5>Shiping & handling: </h5>
-          <h5>Total before tax: </h5>
-          <h5>Estimated tax to be collected: </h5>
-          <h5>Order total (after tax):  </h5>
+
         </div>
         
         <div class="card-action">
