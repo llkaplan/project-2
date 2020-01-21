@@ -1,11 +1,11 @@
 <div class="container ">
   <div class="row">
     <div class="col s6">
-      <h3><a href="/" class="heading h1 black-text home">Shopping Cart</a></h3>
+      <h3><a href="/" class="heading h1 black-text home ">Shopping Cart</a></h3>
     </div>
     <div class="col s6">
-
-      <a href="/cart"><i class="medium material-icons right black-text cart">shopping_cart</i></a>
+      <br>
+      <a href="#"><i class="medium material-icons right black-text cart ">shopping_cart</i></a>
     </div>
   </div>
   <div class="row">
@@ -15,7 +15,7 @@
     </nav>
   </div>
   <div class="row">
-    <div class="card col s4 left ">
+    <div class="card col s4 left hoverable">
       <div class="card-image waves-effect waves-block waves-light">
         <a href="#"><img class="activator item-image" src={{image}}></a>
       </div>
@@ -33,22 +33,31 @@
       <br/>
       <hr>
       <br/>
-      <a class="waves-effect waves-light btn black add right"><i class="material-icons right">add</i>Add to cart</a>
+      <a class="waves-effect waves-light btn black add right hoverable"><i class="material-icons right">add</i>Add to cart</a>
     </div>
   </div>
+  
   <div class="review-container">
     <div class="row">
       <h4 class="coolFont">Comments</h4>
     </div>
 
+    
+
     <div class="row">
       <div class="col-sm-12 col-sm-offset-2">
-        <p class="cool-font">Name</p>
+        <h5 class="cool-font">Name</h5>
         <input class="form-control" type="text" id="name" placeholder="Enter Your Name">
         <br>
-        <p class="cool-font">Comment</p>
-        <textarea class="form-control" rows="6" id="comment" placeholder="Enter Review Here!"></textarea>
-        <button id="submit" class="btn btn-lg pull-right">Submit!</button>
+        <h5 class="cool-font">Comment</h5>
+        <textarea class="form-control" rows="6" id="comment" placeholder="Enter Your Review Here!"></textarea>
+        {{!-- <button id="submit" class="btn btn-lg pull-right">Submit!</button> --}}
+        <br >
+        <br>
+       
+        <button class="btn waves-effect waves-light black hoverable" id="submit" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
       </div>
     </div>
 

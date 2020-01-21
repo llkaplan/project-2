@@ -165,11 +165,13 @@ module.exports = function (app) {
   });
 
   app.get("/cart",function(req,res){
-    db.Cart.findAll({}).then(function(data){
-      var cartObject = {
+    db.Cart.findAll({ raw: true,
+    }).then(function(data){
+      console.log(data);
+      var cartItems = {
         items : data
       };
-      res.render("shoppingCart",cartObject);
+      res.render("shoppingCart",cartItems);
     });
   });
   //reviews api route
