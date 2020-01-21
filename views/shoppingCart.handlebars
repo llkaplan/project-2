@@ -1,11 +1,11 @@
 <div class="container ">
   <div class="row">
     <div class="col s6">
-      <h3><a href="/" class="heading h1 black-text home">Shopping Cart</a></h3>
+      <h3><a href="/" class="heading h1 black-text home ">Shopping Cart</a></h3>
     </div>
     <div class="col s6">
-
-      <a href="#"><i class="medium material-icons right black-text">shopping_cart</i></a>
+      <br>
+      <a href="/cart"><i class="medium material-icons right black-text cart ">shopping_cart</i></a>
     </div>
   </div>
   <div class="row">
@@ -14,24 +14,86 @@
       </div>
     </nav>
   </div>
-
-<h1>Order Cofirmation</h1>
-<h3>Here are the items you chose: </h3>
-<div class="row">
-    {{#each items}}
-    
-      
-        <div class="card large col s3 left hoverable item">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src={{image}}>
-          </div>
-          <div class="card-content">
-            <h6 class="black-text left">{{name}}</h6>
-            <h6><a href="#" class="black-text darken-1-text right">${{price}}</a></h6>
-          </div>
+  <div class="row">
+    <h4>Order Confirmation</h4>
+    <hr>
+    <h5>Added items: </h5>
+    <div class="col s8 left">
+      {{#each items}}
+      <div class="row">
+        <div class="card col s4 left item hoverable" id={{id}}>
+          
+            <div class="card-image waves-effect waves-block waves-light">
+              <a href="#"><img class="activator item-image" src={{image}}></a>
+            </div>
+         
         </div>
-     
-    
-    {{/each}}
+        <div class="col s8">
+          <h5>Name: {{name}}</h5>
+          <h5>Price: ${{price}}</h5>
+        </div>
+      </div>
+      
+      {{/each}}
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <h4>Shipping address: </h4>
+    <div class="row">
+      <div class="col s12">
+        <h5 class="cool-font">Street</h5>
+        <input class="form-control" type="text" id="street" placeholder="Street address">
+        
+    </div>
+    <div class="row">
+      <div class="col s4">
+        <h5 class="cool-font">City</h5>
+        <input class="form-control" type="text" id="city" placeholder="City">
+
+      </div>
+      <div class="col s4">
+        <h5 class="cool-font">State/Provice/Region</h5>
+        <input class="form-control" type="text" id="state" placeholder="State">
+
+      </div>
+      <div class="col s4">
+        <h5 class="cool-font">Postal code</h5>
+        <input class="form-control" type="text" id="postal" placeholder="Postal">
+
+      </div>
+    </div>
+   
+     <button class="btn waves-effect waves-light black hoverable" id="submitInfo" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+      </button>
+      
+  </div>
+
+</div>
+
+<div class="row">
+    <div class="col">
+      <div class="card large white">
+        <div class="card-content black-text">
+          <span class="card-title"><h4>Orders Summary</h4></span>
+          <p>Feel free to check and make sure you added all the right items. Below are all of your items calculated using tax API (Application Programming Interface). Once you are ready, click the button below to proceed to the next step.</p>
+          <hr>
+          <h5>Items: </h5>
+          <h5>Shiping & handling: </h5>
+          <h5>Total before tax: </h5>
+          <h5>Estimated tax to be collected: </h5>
+          <h5>Order total (after tax):  </h5>
+        </div>
+        
+        <div class="card-action">
+          <button class="btn waves-effect waves-light black hoverable " id="submitInfo" type="submit" name="action">Place Your Order
+          <i class="material-icons right">local_grocery_store</i>
+      </button>
+        
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>
