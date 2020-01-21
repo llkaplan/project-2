@@ -67,12 +67,14 @@ $(document).ready(function() {
 
     }
   });
-
+  var orderTotal;
   //adding item to cart table
   $(".add").on("click",function(event){
     event.preventDefault();
     var uneditedPrice = $(".item-price").text();
     var newPrice = uneditedPrice.replace("$","");
+    orderTotal = orderTotal + newPrice;
+  
     console.log(newPrice);
 
     var ItemChosen = {
@@ -88,5 +90,36 @@ $(document).ready(function() {
         console.log(data);
         alert("Added item to cart...");
       });
+  });
+
+  //making ajax call for tax rates
+  $(".cart").on("click",function(){
+    var city="sandiego";
+    var state="ca";
+    var queryURL ="https://trial.serviceobjects.com/FT/web.svc/json/GetTaxInfoByCityState?City="+city+"&State="+state+"&TaxType=sales&LicenseKey=WS19-QUN4-BKY4";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET"
+    }).then(function(response){
+
+      var beforeTax = orderTotal;
+      var tax = response.Results[0].TotalTaxRate;
+      ordertotal = ordertotal * (1+tax);
+      var orderDiv =$("<div>");
+      var orderP =$("<p> Order total before tax: " + beforeTax + "</p>");
+      var taxP = $("<p> Tax: " + tax + "</p>");
+      var total = $("<p> Order after tax: " + orderTotal + "</p>");
+
+      orderDiv.append(orderP);
+      orderDiv.append(taxP);
+      orderDiv.append(total);
+
+      $(".order-container").append(orderDiv);
+
+    });
+
+
+
   });
 });
