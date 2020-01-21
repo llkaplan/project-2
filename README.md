@@ -12,7 +12,6 @@ AS an online customer, I WANT to checkout the items. SO THAT I can buy the right
 
 #### Functionality
 
-The functionality of this project includes:
 * the use of MySQL database, 
 * the use of Sequelize
 * GET and POST routes for retrieving and adding new data
