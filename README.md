@@ -48,6 +48,9 @@ AS an online customer, I WANT to checkout the items. SO THAT I can buy the right
 #### Link to github page: 
 https://github.com/llkaplan/project-2
 
+#### Link to deployed project on Heroku:
+https://rocky-earth-80086.herokuapp.com/
+
 
 
 
